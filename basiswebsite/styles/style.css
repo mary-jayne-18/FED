@@ -1,0 +1,954 @@
+/**************/
+/* CSS REMEDY */
+/**************/
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+/*********************/
+/* CUSTOM PROPERTIES */
+/*********************/
+:root {
+  /* tekst & achtergrond */
+  --color-text: #000000;
+  --color-background: #ffffff;
+  --section-missie-background: #cbdceb;
+  --section-footer-background: #173f0d;
+  --cards-background: #e8f9ff;
+  --landing-background: #99e259;
+  --formulier-background: #722493;
+  --color-text-formulier: #ffffff;
+  --nav-background: #ffffff;
+
+  /*links*/
+  --link-color-footer: #ffffff; /* de kleur van links voor de groene ooter*/
+  --link-color-missie-section: #1c6ea4; /* de kleur van links voor de missie sectie footer*/
+
+  /*knoppen + states*/
+  --aanmelden-button: #ccc8c8;
+  --error-state: #ea3e0f;
+  --succes-state: #5ec416;
+  --border-radius-nieuwsbrief: 2em;
+  --nav-hover: #155986;
+
+  /*Lettertype + size*/
+  --font-family-base: "Montserrat", sans-serif; /*voor de p's*/
+  --font-family-header: "Alfa Slab One", serif; /*voor de koppen dus H1, H2, H3*/
+  --font-size-base: 0.84em; /*p*/
+  --font-size-h1: 1.5em;
+  --font-size-h2: 1.25em;
+  --font-size-h3: 0.9em;
+  --line-height-base: 1.2;
+  --nav-font-size: 1em;
+
+  /*font weights*/
+  --font-weight-bold: 300;
+  --font--weight-regualr: 400;
+
+  /*logo*/
+  --logo-size: 3em;
+
+  --spacing: 2em;
+
+  /*ipad responsivnes*/
+  --ipad-font-size-p: 0.9em;
+  --ipad-font-size-h1: 2.4em;
+  --ipad-font-size-h2: 1.4em;
+  --ipad-font-size-h3: 1em;
+
+  /*desktop responsivnes*/
+  --desktop-font-size-p: 0.88em;
+  --desktop-font-size-h1: 2.4em;
+  --desktop-font-size-h2: 1.8em;
+  --desktop-font-size-h3: 1.2em;
+}
+
+body {
+  margin: 0 auto;
+  padding: 0 1.2em;
+}
+
+/*********************/
+/* HEADER  */
+/*********************/
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  z-index: 1000; /*het menu blijft boven andere content*/
+  height: 5.8em;
+
+  border-bottom: 1px solid #b7b7b7;
+}
+
+header img {
+  width: 150px;
+  height: 48px;
+  margin-left: 0.8em;
+}
+
+header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+header button img {
+  width: 3.2em;
+  height: 3.2em;
+  margin-right: 0.8em;
+}
+
+/*********************/
+/* NAV */
+/*********************/
+nav {
+  position: fixed;
+  top: 5em;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 2rem;
+  translate: 100% 0;
+  transition: translate 0.4s ease-in-out;
+  background-color: var(--nav-background);
+}
+
+/*menu open*/
+nav.toonMenu {
+  translate: 0 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.3em;
+}
+
+nav a {
+  text-decoration: none;
+  font-family: var(--font-family-header);
+  font-size: var(--nav-font-size);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+}
+
+nav a:hover {
+  color: #155986;
+  text-decoration: underline;
+}
+
+/****************************************************************/
+/* styling voor de header als de browser minimaal 38em breed is */
+/****************************************************************/
+@media (min-width: 38em) {
+  nav {
+    order: 0;
+  }
+
+  header > button {
+    display: none;
+  }
+
+  nav button {
+    display: none; /*geen hamburger menu meer*/
+  }
+
+  nav ul {
+    position: static;
+    translate: none;
+    display: flex;
+    gap: 1em;
+
+    padding: 0;
+    background: none;
+  }
+
+  nav li {
+    flex-basis: unset;
+    flex-grow: unset;
+    list-style: none;
+  }
+
+  nav a {
+    flex-direction: column;
+    border: none;
+  }
+
+  header > a:last-of-type {
+    flex-direction: column;
+  }
+}
+
+/****************************************************************/
+/* styling voor de header als de browser minimaal 54em breed is */
+/****************************************************************/
+@media (min-width: 54em) {
+  header > a:last-of-type,
+  nav a {
+    flex-direction: row;
+  }
+}
+
+/*********************/
+/* INTRO BEN & JERRY'S */
+/*********************/
+
+main section:first-of-type {
+  text-align: start;
+}
+
+main section:first-of-type img {
+  display: block;
+  width: 100%;
+  background-color: #77b254;
+  margin-top: 1.1em;
+}
+
+main section:first-of-type h1 {
+  font-family: var(--font-family-header);
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  margin-top: 1.2em;
+}
+
+main section:first-of-type p {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  margin-top: 1em;
+}
+
+/*********************/
+/* PRODUCT SECTION */
+/*********************/
+
+/*titel sectie*/
+main section:nth-of-type(2) h2 {
+  font-size: var(--font-size-h2);
+  font-family: var(--font-family-header);
+  font-weight: var(--font-weight-bold);
+  margin-top: 2em;
+}
+
+main section:nth-of-type(2) p {
+  font-size: 0.7em;
+  font-family: var(--font-family-base);
+  margin-top: -1em;
+}
+
+/* Ul met grid*/
+main section:nth-of-type(2) ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1em;
+  list-style: none;
+  padding-left: 0;
+  padding-top: 0.6em;
+}
+
+/*producten*/
+main section:nth-of-type(2) li {
+  border-radius: 0.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  transition: transform 0.4s ease;
+  cursor: pointer;
+}
+
+main section:nth-of-type(2) li:hover {
+  transform: scale(1.08);
+}
+
+/*afbeelding cards*/
+main section:nth-of-type(2) li img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 0.6em;
+  display: block;
+  background-color: var(--cards-background);
+}
+
+/*titel*/
+main section:nth-of-type(2) li h3 {
+  font-family: var(--font-family-header);
+  font-size: var(--font-size-h3);
+  text-align: center;
+  font-weight: var(--font-weight-bold);
+  display: flex;
+  align-items: center;
+}
+
+/********************************************************************************/
+/* styling voor de product section als de browser minimaal 54em breed is (ipad)*/
+/*******************************************************************************/
+@media (min-width: 38em) {
+  section:nth-of-type(2) p {
+    font-size: var(--ipad-font-size-p);
+    margin-top: -0.9em;
+  }
+
+  section:nth-of-type(2) h2 {
+    font-size: var(--ipad-font-size-h2);
+  }
+
+  section:nth-of-type(2) li h3 {
+    font-size: var(--ipad-font-size-h3);
+  }
+
+  section:nth-of-type(2) ul {
+    grid-template-columns: repeat(3, 1fr);
+  } /*3 kolommen*/
+
+  section:nth-of-type(2) li img {
+    height: 200px;
+  }
+
+  section:nth-of-type(2) li button {
+    padding: 0.6em 1.6em;
+    font-size: 0.9em;
+  }
+}
+
+/**********************************************************************************/
+/* styling voor de product section als de browser minimaal 54em breed is (Desktop)*/
+/**********************************************************************************/
+@media (min-width: 54em) {
+  section:nth-of-type(2) h2 {
+    font-size: var(--desktop-font-size-h2);
+  }
+
+  section:nth-of-type(2) p {
+    font-size: var(--desktop-font-size-p);
+    margin-top: -1em;
+    margin-bottom: 2em;
+  }
+
+  section:nth-of-type(2) li h3 {
+    font-size: var(--desktop-font-size-h3);
+  }
+
+  section:nth-of-type(2) ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5em;
+  } /*3 kolommen*/
+
+  section:nth-of-type(2) li img {
+    height: 450px;
+  }
+
+  section:nth-of-type(2) li button {
+    padding: 0.7em 2em;
+    font-size: 1em;
+  }
+}
+
+/*********************/
+/* VIDEO SECTION */
+/*********************/
+section:nth-of-type(3) {
+  padding-bottom: 1em;
+  padding-top: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section:nth-of-type(3) iframe {
+  justify-content: center;
+  height: 200px;
+  width: 360px;
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+
+/********************************************************************************/
+/* styling voor de video section als de browser minimaal 54em breed is (ipad)*/
+/*******************************************************************************/
+@media (min-width: 38em) {
+  section:nth-of-type(3) {
+    justify-content: center;
+  }
+
+  section:nth-of-type(3) iframe {
+    height: 300px;
+    width: 500px;
+    margin-top: 2em;
+    margin-bottom: 3em;
+  }
+}
+
+/**********************************************************************************/
+/* styling voor de video section als de browser minimaal 54em breed is (Desktop)*/
+/**********************************************************************************/
+@media (min-width: 54em) {
+  section:nth-of-type(3) {
+    justify-content: center;
+  }
+
+  section:nth-of-type(3) iframe {
+    height: 400px;
+    width: 700px;
+    margin-top: 4em;
+    margin-bottom: 5em;
+  }
+}
+
+/*********************/
+/* MISSIE SECTION */
+/*********************/
+main section:nth-of-type(4) {
+  background-color: var(--section-missie-background);
+  width: 100%;
+  padding-bottom: 4em;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 1em;
+}
+
+main section:nth-of-type(4) h2 {
+  font-family: var(--font-family-header);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  padding-bottom: 1.1em;
+}
+
+/*artikel layout: afbeelding links, de tekst rechts*/
+main section:nth-of-type(4) article {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing);
+  margin-bottom: var(--spacing);
+  align-items: flex-start;
+}
+
+/*afbeelding links*/
+main section:nth-of-type(4) article img {
+  width: 3em;
+  flex-shrink: 1;
+}
+
+/*div tekst komt reachts van de afbeelding*/
+
+main section:nth-of-type(4) article > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em; /*ruimte tussen de p, H3 en a*/
+}
+
+/*typografie*/
+main section:nth-of-type(4) article h3 {
+  font-family: var(--font-family-header);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+}
+
+main section:nth-of-type(4) article p {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  margin: 0;
+}
+
+main section:nth-of-type(4) article a {
+  color: var(--link-color-missie-section);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  font-weight: var(--font--weight-regualr);
+  display: inline-block;
+  transition: color 0.4s ease-in-out;
+}
+
+main section:nth-of-type(4) article a:hover {
+  color: black;
+  cursor: pointer;
+}
+
+/*animatie*/
+@keyframes draai-animatie {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+main section:nth-of-type(4) article img:hover {
+  animation: draai-animatie 1s;
+}
+
+/********************************************************************************/
+/* styling voor de missie section als de browser minimaal 54em breed is (ipad)*/
+/*******************************************************************************/
+@media (min-width: 38em) {
+  main section:nth-of-type(4) article {
+    margin-top: 2em;
+  }
+
+  main section:nth-of-type(4) article p {
+    font-size: var(--ipad-font-size-p);
+  }
+
+  main section:nth-of-type(4) h2 {
+    font-size: var(--ipad-font-size-h2);
+  }
+
+  main section:nth-of-type(4) article h3 {
+    font-size: var(--ipad-font-size-h3);
+  }
+
+  main section:nth-of-type(4) article a {
+    font-size: var(--ipad-font-size-p);
+  }
+
+  main section:nth-of-type(4) {
+    background-color: var(--section-missie-background);
+    width: 100%;
+    padding-bottom: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 1em;
+  }
+}
+
+/**********************************************************************************/
+/* styling voor de missie section als de browser minimaal 54em breed is (Desktop)*/
+/**********************************************************************************/
+@media (min-width: 54em) {
+  main section:nth-of-type(4) {
+    display: block; /* de sectie zelf blijft normaal, h2 bovenaan */
+  }
+
+  /* Alleen de artikelen als grid */
+  main section:nth-of-type(4) > article {
+    display: inline-block; /* startpunt voor grid */
+  }
+
+  main section:nth-of-type(4) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 artikelen naast elkaar */
+    gap: 2em;
+  }
+
+  /* h2 buiten het grid houden */
+  main section:nth-of-type(4) > h2 {
+    grid-column: 1 / -1; /* neemt alle kolommen in, dus boven de artikelen */
+    margin-bottom: 2em;
+  }
+}
+
+/*********************/
+/* FORMULIER */
+/*********************/
+main section:last-of-type {
+  background-color: var(--formulier-background);
+  padding: 2em;
+  text-align: center;
+  margin-top: 2em;
+}
+
+main section:last-of-type h2 {
+  font-family: var(--font-family-header);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-formulier);
+  letter-spacing: 0.1em;
+}
+
+main section:last-of-type p {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  color: var(--color-text-formulier);
+}
+
+/*formulier styling*/
+form {
+  display: grid;
+  gap: 1em;
+  margin: 0 auto;
+}
+
+/*labels*/
+form label {
+  text-align: left;
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  color: var(--color-text-formulier);
+}
+
+/* de input*/
+form input {
+  border: solid 0.25em #ffffff;
+  padding: 0.7em;
+  outline: none;
+  border-radius: var(--border-radius-nieuwsbrief);
+}
+
+form input:focus {
+  outline: 0.2em solid #f0d964;
+  outline-offset: 0.15em;
+}
+
+/*valid is groen*/
+form input:not(:placeholder-shown):valid {
+  border-color: var(--succes-state);
+  outline-color: var(--succes-state);
+}
+
+/*invalid wordt rood*/
+form input:not(:placeholder-shown):invalid {
+  border-color: var(--error-state);
+  outline-color: var(--error-state);
+}
+
+/*de knop (lijkt uitgeschakeld)*/
+form button {
+  background-color: var(--aanmelden-button);
+  padding: 0.9em;
+  border: none;
+  cursor: not-allowed;
+  border-radius: var(--border-radius-nieuwsbrief);
+  margin-top: 1.5em;
+  font-family: var(--font-family-base);
+  transition: background-color 0.6s ease, color 0.6s ease;
+}
+
+/*wanneer het formulier geldig is*/
+form:valid button {
+  background-color: var(--succes-state);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+/*hover state zzodra het formulier geldig is*/
+form:valid button:hover {
+  background-color: #f0d964;
+}
+
+/*********************/
+/* FOOTER */
+/*********************/
+footer {
+  background-color: var(--section-footer-background);
+  text-align: left;
+  justify-content: left;
+  padding: 1em;
+  margin-top: 2em;
+}
+
+/*ruimte tussen de sections*/
+footer section {
+  margin-bottom: 2em;
+}
+
+footer h3 {
+  font-family: var(--font-family-header);
+  font-size: var(--font-size-header);
+  font-weight: var(--font-weight-bold);
+  color: var(--link-color-footer);
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+footer a {
+  text-decoration: none;
+  color: var(--link-color-footer);
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: 2em;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/*********************/
+/* PAGINA 2 IJSFABRIEK */
+/*********************/
+/*basis lay-out met ruimte aan de zijkanten*/
+.ijsfabriek {
+  margin: 0 auto;
+  padding: 0 1.2em;
+}
+
+/*********************/
+/* intro*/
+/*********************/
+.ijsfabriek main section:nth-of-type(1) h1 {
+  font-family: var(--font-family-header);
+  font-weight: var(--font-weight-bold);
+}
+
+.ijsfabriek main section:nth-of-type(1) p {
+  font-family: var(--font-family-base);
+  font-weight: var(--font--weight-regualr);
+  font-size: var(--font-size-base);
+}
+
+.ijsfabriek section:nth-of-type(1) img {
+  display: block;
+  width: 100%;
+}
+
+/*********************/
+/* video*/
+/*********************/
+.ijsfabriek main section:nth-of-type(2) iframe {
+  justify-content: center;
+  height: 250px;
+  width: 360px;
+}
+
+.ijsfabriek main section:nth-of-type(2) {
+  padding-bottom: 1em;
+  padding-top: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*********************/
+/* afbeelding kaart*/
+/*********************/
+
+.ijsfabriek main section:nth-of-type(3) img {
+  justify-content: center;
+  height: 200px;
+  width: 360px;
+  margin-top: 2em;
+}
+
+/*********************/
+/* werken bij sectie*/
+/*********************/
+
+.ijsfabriek main section:nth-of-type(4) {
+  background-color: #ffffff;
+  margin-top: 2em;
+}
+
+.ijsfabriek main section:nth-of-type(4) h2 {
+  font-family: var(--font-family-header);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+}
+
+.ijsfabriek main section:nth-of-type(4) p {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  font-weight: var(--font--weight-regualr);
+  margin-top: -2em;
+}
+
+/*********************/
+/* artikelen*/
+/*********************/
+
+/*titel sectie*/
+.ijsfabriek main section:nth-of-type(5) h2 {
+  font-size: var(--font-size-h2);
+  font-family: var(--font-family-header);
+  font-weight: var(--font-weight-bold);
+  margin-top: 2em;
+}
+
+/* Ul met grid*/
+.ijsfabriek main section:nth-of-type(5) ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1em;
+  list-style: none;
+  padding-left: 0;
+  padding-top: 0.6em;
+}
+
+/*artikelen*/
+.ijsfabriek main section:nth-of-type(5) li {
+  border-radius: 0.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  transition: transform 0.4s ease;
+  cursor: pointer;
+}
+
+.ijsfabriek main section:nth-of-type(5) li:hover {
+  transform: scale(1.08);
+}
+
+.ijsfabriek main section:nth-of-type(5) li a {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  font-weight: var(--font--weight-regualr);
+  transition: color 0.3s ease;
+}
+
+.ijsfabriek main section:nth-of-type(5) li a:hover {
+  color: #000000;
+  cursor: pointer;
+}
+
+/*afbeelding cards*/
+.ijsfabriek main section:nth-of-type(5) li img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 0.6em;
+  display: block;
+}
+
+.ijsfabriek main section:nth-of-type(5) li h3 {
+  font-family: var(--font-family-header);
+  font-size: var(--font-size-h3);
+  text-align: center;
+  font-weight: var(--font-weight-bold);
+  display: flex;
+  align-items: center;
+}
+
+/*********************/
+/* missie section*/
+/*********************/
+.ijsfabriek main section:nth-of-type(6) {
+  background-color: var(--section-missie-background);
+  width: 100%;
+  padding-bottom: 4em;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 1em;
+}
+
+.ijsfabriek main section:nth-of-type(6) {
+  font-family: var(--font-family-header);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  padding-bottom: 1.1em;
+}
+
+/*artikel layout: afbeelding links, de tekst rechts*/
+.ijsfabriek main section:nth-of-type(6) article {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing);
+  margin-bottom: var(--spacing);
+  align-items: flex-start;
+}
+
+/*afbeelding links*/
+.ijsfabriek main section:nth-of-type(6) article img {
+  width: 3em;
+  flex-shrink: 1;
+}
+
+/*div tekst komt reachts van de afbeelding*/
+
+.ijsfabriek main section:nth-of-type(6) article > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em; /*ruimte tussen de p, H3 en a*/
+}
+
+/*typografie*/
+.ijsfabriek main section:nth-of-type(6) article h3 {
+  font-family: var(--font-family-header);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+}
+
+.ijsfabriek main section:nth-of-type(6) article p {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  margin: 0;
+}
+
+.ijsfabriek main section:nth-of-type(6) article a {
+  color: var(--link-color-missie-section);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  font-weight: var(--font--weight-regualr);
+  display: inline-block;
+  transition: color 0.4s ease-in-out;
+}
+
+.ijsfabriek main section:nth-of-type(6) article a:hover {
+  color: black;
+  cursor: pointer;
+}
+
+/*animatie*/
+@keyframes draai-animatie {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+.ijsfabriek main section:nth-of-type(6) article img:hover {
+  animation: draai-animatie 1s;
+}
+
+/*********************/
+/* FOOTER */
+/*********************/
+
+.ijsfabriek footer {
+  background-color: var(--section-footer-background);
+  text-align: left;
+  justify-content: left;
+  padding: 1em;
+  margin-top: 2em;
+}
+
+/*ruimte tussen de sections*/
+.ijsfabriek footer section {
+  margin-bottom: 2em;
+}
+
+.ijsfabriek footer h3 {
+  font-family: var(--font-family-header);
+  font-size: var(--font-size-header);
+  font-weight: var(--font-weight-bold);
+  color: var(--link-color-footer);
+}
+
+.ijsfabriek footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ijsfabriek footer a {
+  text-decoration: none;
+  color: var(--link-color-footer);
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: 2em;
+}
+
+.ijsfabriek footer a:hover {
+  text-decoration: underline;
+}
